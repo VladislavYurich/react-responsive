@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 import { IMediaQuery } from "./types";
 
 
-export const useMediaQuery = (mediaQuery: IMediaQuery) => {
+export const useMediaQuery = (mediaQuery: IMediaQuery) => { 
     const query = mediaQuery.query 
-    const [isMatches, setIsMaches] = useState(window.matchMedia(query).matches)
+    const [isMatches, setIsMaches] = useState(false)
 
     useEffect(()=>{
-        const mediaQeryList = window.matchMedia(query)
-        console.log(mediaQeryList)
-        const documentChangeHandler = () => setIsMaches(mediaQeryList.matches)
+        const mediaQueryList = window.matchMedia(query)
+        setIsMaches(mediaQueryList.matches)
+        const documentChangeHandler = () => setIsMaches(mediaQueryList.matches)
 
-        mediaQeryList.addEventListener('change', documentChangeHandler)
+        mediaQueryList.addEventListener('change', documentChangeHandler)
         return  () => {
-            mediaQeryList.removeEventListener('change', documentChangeHandler)
+            mediaQueryList.removeEventListener('change', documentChangeHandler)
         }
     }, [query])
 

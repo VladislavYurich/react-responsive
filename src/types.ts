@@ -7,7 +7,7 @@ export interface IMediaQueryProps {
     maxWidth?: number;
     minHeight?: number;
     maxHeight?: number;
-    orientation?: string;
+    orientation?: TOrientation;
     minResolution?: TResolutionValue | number;
     maxResolution?: TResolutionValue | number;
     children: React.ReactNode | ((matches: boolean) => React.ReactNode);
@@ -15,4 +15,6 @@ export interface IMediaQueryProps {
 
 export type TResolutionUnits = "dppx";
 export type TResolutionValue = `${number}${TResolutionUnits}`;
+
+export type TOrientation = "portrait" | "landscape";
 
